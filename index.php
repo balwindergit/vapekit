@@ -1,3 +1,7 @@
+<?php
+include_once dirname(__file__)."/config/common.php";
+$cities=getUniqueCities();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,55 +112,47 @@
       <h2>Browse by Citys</h2>
     <div class="city-list">
       <div class="city-list-item owl-carousel owl-carousel-city">
-        <div class="city-list-image item">
-          <img src="./img/city/city.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city2.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city3.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city4.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city5.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city6.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
-         <div class="city-list-image">
-          <img src="./img/city/city7.png" alt="ban-1">
-          <div class="city-list-content">
-            <h3>New York</h3>
-            <p>300 Businesses</p>
-          </div>
-         </div>
+	  <?php
+		foreach($cities as $index=>$data)
+		{	
+			if(!empty(trim($data['town'])))
+			{
+				if($index==0)
+				{
+					?>
+					  <div class="city-list-image item">
+			  <img src="images/?i=<?php echo $data['town'];?>" alt="ban-1" style="width:205px;height:253px;">
+			  <div class="city-list-content">
+				<h3><?php echo $data['town'];?></h3>
+				<p>300 Businesses</p>
+			  </div>
+			 </div>
+			 <?php
+					
+					
+				}
+				else
+				{
+					?>
+					<div class="city-list-image">
+			  <img src="images/?i=<?php echo $data['town'];?>" alt="ban-1" style="width:205px;height:253px;">
+			  <div class="city-list-content">
+				<h3><?php echo $data['town'];?></h3>
+				<p>300 Businesses</p>
+			  </div>
+			 </div>
+			 <?php
+					
+				}
+			}
+			// if(!empty(trim($data['town'])))
+			// {
+				// echo '<a href="business-directory.php?local='.$data['town'].'">'.$data['town'].'</a><br/>';
+
+			// }
+		}
+?>	  
+        
       </div>
       
     </div>
